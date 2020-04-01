@@ -1,0 +1,19 @@
+{
+    "name": "oleksandr-nazarov/sps-game",
+    "description": "Stone, paper, scissors: the game",
+    "require": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "authors": [
+        {
+            "name": "Oleksandr Nazarov",
+            "email": "nazarov.oleksandr.o@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"SPS\\": "src/"}
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
