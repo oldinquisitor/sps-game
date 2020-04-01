@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./tools/Dockerfile
+    container_name: app
+    restart: always
+    tty: true
+    working_dir: /var/www
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+
+networks:
+  app-network:
+    driver: bridge
