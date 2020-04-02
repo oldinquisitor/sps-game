@@ -17,12 +17,6 @@
         "test": "phpunit tests",
         "start": [
             "composer install"
-        ],
-        "post-install-cmd": [
-            "@test"
-        ],
-        "post-update-cmd": [
-            "@test"
         ]
     }
 }
