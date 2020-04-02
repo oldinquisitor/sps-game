@@ -15,7 +15,7 @@ class Strategy implements StrategyInterface
 
     /**
      * Strategy constructor.
-     * @param mixed ...$items
+     * @param ItemInterface[] ...$items
      */
     public function __construct(...$items)
     {
@@ -28,5 +28,21 @@ class Strategy implements StrategyInterface
     public function play(): ItemInterface
     {
         return $this->items[array_rand($this->items)];
+    }
+
+    /**
+     * @return ItemInterface[]
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed ...$items
+     */
+    public function setItems(...$items): void
+    {
+        $this->items = $items;
     }
 }
