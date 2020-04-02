@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SPS\Rule;
+namespace SPS\Game;
 
 
 class Exception extends \Exception

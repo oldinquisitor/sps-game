@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SPS;
+namespace SPS\Game;
 
 
 use SPS\Player\PlayerInterface;
@@ -20,4 +20,9 @@ interface GameInterface
      * @param RuleInterface $rule
      */
     public function addRule(RuleInterface $rule): void;
+
+    /**
+     * @param int $rounds
+     */
+    public function setRounds(int $rounds): void;
 }

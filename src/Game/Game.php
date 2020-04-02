@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SPS;
+namespace SPS\Game;
 
 
 use SPS\Item\ItemInterface;
@@ -9,10 +9,11 @@ use SPS\Player\PlayerInterface;
 use SPS\Rule\Rule;
 use SPS\Rule\RuleInterface;
 use SPS\Score\Score;
-use SPS\Strategy\StrategyInterface;
 
 class Game implements GameInterface
 {
+    public const DEFAULT_ROUNDS_QTY = 100;
+
     /**
      * @var PlayerInterface[]
      */
@@ -32,7 +33,7 @@ class Game implements GameInterface
      * Game constructor.
      * @param int $rounds
      */
-    public function __construct(int $rounds)
+    public function __construct(int $rounds = self::DEFAULT_ROUNDS_QTY)
     {
         $this->rounds = $rounds;
     }
@@ -58,7 +59,7 @@ class Game implements GameInterface
      */
     public function addPlayer(PlayerInterface $player): void
     {
-        if (!$player->getStrategy() instanceof StrategyInterface) {
+        if (empty($player->getStrategy())) {
             throw new Exception('Player must have strategy to play the game');
         }
 
@@ -75,6 +76,14 @@ class Game implements GameInterface
     public function addRule(RuleInterface $rule): void
     {
         $this->rules[] = $rule;
+    }
+
+    /**
+     * @param int $rounds
+     */
+    public function setRounds(int $rounds): void
+    {
+        $this->rounds = $rounds;
     }
 
     /**
