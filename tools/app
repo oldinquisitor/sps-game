@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+tools/install && tools/test && tools/run
