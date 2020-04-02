@@ -53,24 +53,27 @@ class Utils
             ) . PHP_EOL;
         }
 
-        $results .= sprintf(
+        $results .= PHP_EOL .
+            sprintf(
             '[RESULTS] "%s" score - "%d", "%s" score - "%d". ',
-            $playerAName,
-            $playerATotalScore,
-            $playerBName,
-            $playerBTotalScore,
-        );
+                $playerAName,
+                $playerATotalScore,
+                $playerBName,
+                $playerBTotalScore,
+            )
+        ;
 
         if ($playerATotalScore == $playerBTotalScore) {
             $results .= 'Draw result!';
-        } elseif ($playerATotalScore > $playerBTotalScore) {
-            $results .= sprintf('"%s" is the Winner', $playerAName);
         } else {
-            $results .= sprintf('"%s" is the Winner', $playerBName);
+            $results .= sprintf(
+                '"%s" is the Winner',
+                $playerATotalScore > $playerBTotalScore
+                    ? $playerAName
+                    : $playerBName
+            );
         }
 
-        $results .= PHP_EOL;
-
-        return $results;
+        return $results . PHP_EOL;
     }
 }
