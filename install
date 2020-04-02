@@ -3,4 +3,6 @@
 docker run --rm --interactive --tty \
   --volume $PWD:/app \
   --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-  composer $@
+  composer start \
+&& \
+docker-compose up --build -d

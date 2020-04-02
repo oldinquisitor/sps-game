@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./tools/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: app
     restart: always
     tty: true
