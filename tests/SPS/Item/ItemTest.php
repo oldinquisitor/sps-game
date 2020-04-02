@@ -16,11 +16,12 @@ class ItemTest extends TestCase
     public function testItems(): void
     {
         $paperItem = new PaperItem();
-        $stoneItem = new StoneItem();
-        $scissorsItem = new ScissorsItem();
-
         $this->assertIsString($paperItem->getTitle(), self::MESSAGE);
+
+        $stoneItem = new StoneItem();
         $this->assertIsString($stoneItem->getTitle(), self::MESSAGE);
+
+        $scissorsItem = new ScissorsItem();
         $this->assertIsString($scissorsItem->getTitle(), self::MESSAGE);
     }
 }
