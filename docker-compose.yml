@@ -1,19 +1,17 @@
 version: '3'
 services:
 
-  app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    container_name: app
+  sps-game:
+    build: ./docker
+    container_name: sps-game
     restart: always
     tty: true
-    working_dir: /var/www
+    working_dir: /var/www/html
     networks:
-      - app-network
+      - sps-game-network
     volumes:
-      - ./:/var/www
+      - ./:/var/www/html
 
 networks:
-  app-network:
+  sps-game-network:
     driver: bridge

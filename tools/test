@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-tools/composer test
