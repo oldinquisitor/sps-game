@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Rule;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +10,7 @@ use SPS\Item\PaperItem;
 use SPS\Item\StoneItem;
 use SPS\Rule\Rule;
 
-class RuleTest extends TestCase
+final class RuleTest extends TestCase
 {
     public function testRule(): void
     {

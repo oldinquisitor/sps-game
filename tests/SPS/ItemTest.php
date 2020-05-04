@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Item;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +10,7 @@ use SPS\Item\PaperItem;
 use SPS\Item\ScissorsItem;
 use SPS\Item\StoneItem;
 
-class ItemTest extends TestCase
+final class ItemTest extends TestCase
 {
     private const MESSAGE = 'Item doesn\'t have title';
 

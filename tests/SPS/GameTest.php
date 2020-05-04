@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Game;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -15,10 +15,10 @@ use SPS\Player\PlayerInterface;
 use SPS\Player\RandomStrategyPlayerFactory;
 use SPS\Rule\PaperHitsStoneRuleFactory;
 use SPS\Rule\ScissorsHitsPaperRuleFactory;
-use SPS\Rule\StoneHitsScissorsFactory;
+use SPS\Rule\StoneHitsScissorsRuleFactory;
 use SPS\Strategy\Strategy;
 
-class GameTest extends TestCase
+final class GameTest extends TestCase
 {
     private GameInterface $game;
 
@@ -85,7 +85,7 @@ class GameTest extends TestCase
     private function addRules()
     {
         $this->game->addRule(PaperHitsStoneRuleFactory::makeRule());
-        $this->game->addRule(StoneHitsScissorsFactory::makeRule());
+        $this->game->addRule(StoneHitsScissorsRuleFactory::makeRule());
         $this->game->addRule(ScissorsHitsPaperRuleFactory::makeRule());
     }
 }

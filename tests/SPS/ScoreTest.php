@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Score;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +10,7 @@ use SPS\Item\ScissorsItem;
 use SPS\Item\StoneItem;
 use SPS\Score\Score;
 
-class ScoreTest extends TestCase
+final class ScoreTest extends TestCase
 {
     public function testScore(): void
     {

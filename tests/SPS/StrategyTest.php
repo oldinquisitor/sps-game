@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Strategy;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +10,7 @@ use SPS\Item\ScissorsItem;
 use SPS\Item\StoneItem;
 use SPS\Strategy\Strategy;
 
-class StrategyTest extends TestCase
+final class StrategyTest extends TestCase
 {
     public function testStrategy(): void
     {

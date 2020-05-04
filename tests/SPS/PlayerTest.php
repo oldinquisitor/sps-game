@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\SPS\Player;
+namespace SPS;
 
 
 use PHPUnit\Framework\TestCase;
@@ -14,9 +14,8 @@ use SPS\Player\PlayerInterface;
 use SPS\Score\Score;
 use SPS\Strategy\Strategy;
 use SPS\Strategy\StrategyInterface;
-use SPS\Utils;
 
-class PlayerTest extends TestCase
+final class PlayerTest extends TestCase
 {
     private PlayerInterface $player;
 
