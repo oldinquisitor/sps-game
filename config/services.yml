@@ -1,0 +1,56 @@
+parameters:
+  sps.game.game.rounds: 100
+
+services:
+  sps.item.paper_item:
+    class: SPS\Item\PaperItem
+  sps.item.stone_item:
+    class: SPS\Item\StoneItem
+  sps.item.scissors_item:
+    class: SPS\Item\ScissorsItem
+
+  sps.strategy.strategy_paper:
+    class: SPS\Strategy\Strategy
+    arguments: ['@sps.item.paper_item']
+  sps.strategy.strategy_random:
+    class: SPS\Strategy\Strategy
+    arguments: ['@sps.item.paper_item', '@sps.item.stone_item', '@sps.item.scissors_item']
+
+  sps.player.paper_strategy_player_factory:
+    class: SPS\Player\PaperStrategyPlayerFactory
+  sps.player.random_strategy_player_factory:
+    class: SPS\Player\RandomStrategyPlayerFactory
+
+  sps.player.player_a:
+    class: SPS\Player\Player
+    factory: ['@sps.player.paper_strategy_player_factory', 'makePlayer']
+  sps.player.player_b:
+    class: SPS\Player\Player
+    factory: ['@sps.player.random_strategy_player_factory', 'makePlayer']
+
+  sps.rule.paper_hits_stone_rule_factory:
+    class: SPS\Rule\PaperHitsStoneRuleFactory
+  sps.rule.scissors_hits_paper_rule_factory:
+    class: SPS\Rule\ScissorsHitsPaperRuleFactory
+  sps.rule.stone_hits_scissors_rule_factory:
+    class: SPS\Rule\StoneHitsScissorsRuleFactory
+
+  sps.rule.paper_hits_stone_rule:
+    class: SPS\Rule\Rule
+    factory: ['@sps.rule.paper_hits_stone_rule_factory', 'makeRule']
+  sps.rule.scissors_hits_paper_rule:
+    class: SPS\Rule\Rule
+    factory: ['@sps.rule.scissors_hits_paper_rule_factory', 'makeRule']
+  sps.rule.stone_hits_scissors_rule:
+    class: SPS\Rule\Rule
+    factory: ['@sps.rule.stone_hits_scissors_rule_factory', 'makeRule']
+
+  sps.game.game:
+    class: SPS\Game\Game
+    arguments: ['%sps.game.game.rounds%']
+    calls:
+      - [addPlayer, ['@sps.player.player_a']]
+      - [addPlayer, ['@sps.player.player_b']]
+      - [addRule, ['@sps.rule.paper_hits_stone_rule']]
+      - [addRule, ['@sps.rule.scissors_hits_paper_rule']]
+      - [addRule, ['@sps.rule.stone_hits_scissors_rule']]
