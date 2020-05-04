@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace SPS\Player;
 
 
-use SPS\Item\PaperItem;
-use SPS\Strategy\Strategy;
+use SPS\Container;
 
 class PaperStrategyPlayerFactory implements PlayerFactoryInterface
 {
     /**
      * @return PlayerInterface
+     * @throws \Exception
      */
     public static function makePlayer(): PlayerInterface
     {
-        return new Player('Player A', new Strategy(new PaperItem()));
+        return new Player('Player A', Container::getService('sps.strategy.strategy_paper'));
     }
 }

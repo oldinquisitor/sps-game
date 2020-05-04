@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace SPS\Player;
 
 
-use SPS\Item\PaperItem;
-use SPS\Item\ScissorsItem;
-use SPS\Item\StoneItem;
-use SPS\Strategy\Strategy;
+use SPS\Container;
 
 class RandomStrategyPlayerFactory implements PlayerFactoryInterface
 {
     /**
      * @return PlayerInterface
+     * @throws \Exception
      */
     public static function makePlayer(): PlayerInterface
     {
-        return new Player('Player B', new Strategy(new PaperItem(), new StoneItem(), new ScissorsItem()));
+        return new Player('Player B', Container::getService('sps.strategy.strategy_random'));
     }
 }

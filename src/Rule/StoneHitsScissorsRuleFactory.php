@@ -7,7 +7,7 @@ namespace SPS\Rule;
 
 use SPS\Container;
 
-class ScissorsHitsPaperRuleFactory implements RuleFactoryInterface
+class StoneHitsScissorsRuleFactory implements RuleFactoryInterface
 {
     /**
      * @return Rule
@@ -15,6 +15,6 @@ class ScissorsHitsPaperRuleFactory implements RuleFactoryInterface
      */
     public static function makeRule(): Rule
     {
-        return new Rule(Container::getService('sps.item.scissors_item'), Container::getService('sps.item.paper_item'));
+        return new Rule(Container::getService('sps.item.stone_item'), Container::getService('sps.item.scissors_item'));
     }
 }
