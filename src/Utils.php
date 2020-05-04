@@ -25,10 +25,10 @@ class Utils
     }
 
     /**
-     * @param array $scores
-     * @return string
+     * @param PlayerInterface $playerA
+     * @param PlayerInterface $playerB
      */
-    public static function outputGameResults(PlayerInterface $playerA, PlayerInterface $playerB): string
+    public static function outputGameResults(PlayerInterface $playerA, PlayerInterface $playerB): void
     {
         $playerAName = $playerA->getName();
         $playerBName = $playerB->getName();
@@ -43,7 +43,7 @@ class Utils
 
         foreach ($playerAScores as $round => $score) {
             $results .= sprintf(
-                '[Round %d] "%s" plays "%s" and gets "%d" points, "%s" plays "%s" and gets "%d" points',
+                '[Round %d]' . PHP_EOL . '"%s" plays "%s" and gets "%d" points' . PHP_EOL . '"%s" plays "%s" and gets "%d" points',
                 $round + 1,
                 $playerAName,
                 $score->getItem()->getTitle(),
@@ -51,17 +51,16 @@ class Utils
                 $playerBName,
                 $playerBScores[$round]->getItem()->getTitle(),
                 $playerBScores[$round]->getPoints()
-            ) . PHP_EOL;
+            ) . PHP_EOL . PHP_EOL;
         }
 
-        $results .= PHP_EOL .
-            sprintf(
-            '[RESULTS] "%s" score - "%d", "%s" score - "%d". ',
+        $results .= sprintf(
+            '[RESULTS]' . PHP_EOL . '"%s" score - "%d"' . PHP_EOL . '"%s" score - "%d" ',
                 $playerAName,
                 $playerATotalScore,
                 $playerBName,
                 $playerBTotalScore,
-            )
+            ) . PHP_EOL
         ;
 
         if ($playerATotalScore == $playerBTotalScore) {
@@ -75,6 +74,24 @@ class Utils
             );
         }
 
-        return $results . PHP_EOL;
+        echo $results . PHP_EOL;
+    }
+
+    public static function outputGameStart(): void
+    {
+        echo '[GAME HAS BEEN STARTED]' . PHP_EOL . PHP_EOL;
+    }
+
+    public static function outputGameFinish(): void
+    {
+        echo PHP_EOL . '[GAME HAS BEEN FINISHED]' . PHP_EOL;
+    }
+
+    /**
+     * @param \Exception $exception
+     */
+    public static function outputError(\Exception $exception): void
+    {
+        echo '[Error] ' . PHP_EOL . $exception->getMessage() . PHP_EOL . PHP_EOL;
     }
 }
