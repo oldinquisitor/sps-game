@@ -18,7 +18,7 @@ Clone repository and execute `docker/start.sh` script in project folder. This ac
 * Run the application
 
 ## Installation
-* Clone repository `https://github.com/oldinquisitor/sps-game.git`
+* Clone repository https://github.com/oldinquisitor/sps-game.git
 * Execute `docker/build.sh` script to build the application
 
 ## Testing
